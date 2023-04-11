@@ -1,0 +1,352 @@
+=============================================================
+CS 106A Programming Methodology, Java
+                  Marty Stepp  Spring 2017 > Notes 05.04.2023     
+=============================================================
+
+Related courseL
+CS106AJ JavaScript 
+CS106B C++
+CS106X C++ in depth
+
+Lecture 01- Course introduction; intro to Karel ====================================
+Lecture 2  Programming with Karel ====================================
+Lecture 3 Problem Solving with Karel ====================================
+Lecture 4 Console Programs; Expressions and Variabl ====================================
+Lecture 5 Control Statements Revisited ====================================
+Lecture 6 More Loops; Constants; Random Numbers====================================
+Lecture 7 Parameters ====================================
+Lecture 8 Return; Boolean ====================================
+Lecture 9 Strings ====================================
+Lecture 10 Files  ====================================
+Lecture 11 Graphics; more Files ====================================
+Lecture 12 Events; Fields  ====================================
+
+
+Lecture 13- Animation; more Events =================================
+PetAnAbby.java
+public class PetAnAbby extends GraphicsProgram {
+    private int score
+    private GLabel scoreLabel; 
+    
+    public void run() {
+      while(true) {
+        //do something 
+      }
+    }
+    
+    public void mouseClicked(MouseEvent event) {
+      double mouseX = event.getX();
+      double mouseY = event.getY();
+      if (mole != null) {
+         remove(mole);
+         score++;
+      }
+    }
+}
+  
+ Animation ======
+ while (test) { 
+    update position of shapes; 
+    pause(milliseconds);
+ }
+
+e.g Raindrop animation
+import xx
+public class Rain extends GraphoicsProgram {
+  private static final int
+  
+  public void makeItRain(int x, int y){
+    int x = RandomGenerator.getInstance().nextInt(0, getWidth() - RAINDROP_SIZE);
+    GOval raindrop = new GOval(x, 0, RAINDROP_SIZE, RAINDROP_SIZE);
+    add(raindrop);
+  }
+  
+  public void run(){
+    makeItRain();
+    while(true){
+      raindrop.move(0,2)
+      pause(50);
+    }
+  }
+   
+}
+
+for (GOject go : this) {
+  go.move(0,2)
+}
+
+GCompound ======
+
+
+Lecture 14- Classes and Objects    =================================
+1. Events object (MouseEvent) ====== 
+object: MouseEvent
+public void mousePressed(MouseEvent event) {
+}
+
+2. event methods ======
+mouseDragged(MouseEvent event) / mouseMoved / mouseClicked /...
+
+addMouseListeners()
+
+getElementAt ======
+GObject obj = getElementAt(x,y); 
+remove(obj); 
+
+3. null =====
+special constant value meaning "no object"
+if (obj != null) { 
+  remove(obj)
+}
+
+fields ======
+scope: 
+  fields - aka instance variables (global variable)
+  use as little as possible as every method sees/can change it. 
+  
+
+Lecture 15 boolean logic, arrarys  ============== =================================
+1. boolean  =====
+motivation for boolean: writing test methods that returns boolean. 
+
+public boolean isEven(int n) {
+  if n even return true else false 
+}
+
+morgan's law: the opposite of a logic 
+
+StringExamples.java
+take input of two string and check if they rhyme ( same last two letters)
+
+2. when to return? =====
+e.g. Draws 10 lotto numbers; returns true if one is 7 
+
+3. arrays ======
+ public int[] readTempratures()
+  return temps
+public void computeAverage(int[] temps)
+  return average 
+public void daysAboveAverage(int[] temps, double average)
+  println("Days above average: " + count)
+  
+  
+Lecture 16 Multi dimensional Arrays =================================
+2d arrays > image / pixels with RGB 
+type[][] name = new type[rows][colums]
+
+int[][] a = new int[3][5]
+
+looping over 2d arrays
+nested loop (row > colomn)
+
+for int r = 0; r < a.length; r++
+  for int c=0; c<a[r].length; c++
+    do sth with a[r][c]
+
+reasoning in 2D ====
+construct a jagged 2d arrays: 
+int[][] = new int[3][]
+jagged[0] = new int[2]
+jagged[1] = new int[4]
+jagged[2] = new int[3]
+jagged
+
+GImage pixel methods
+img.getPixelArray()
+img.setPixelArray(array)
+
+int[][] pixels = image.getPixelArray()'
+int px = pixels[0][0]
+
+e.g. make pic 2x bigger
+
+Lecture 17 More Arrays; Discuss Midterm =================================
+reference semantics ==== 
+int[] a1 
+int[] a2 = a1 // refer to the same array 
+
+output parameter ==== 
+objects (dictionary): stored as references (arrays)
+BankAccount[] account = new BankAccount[3];
+println(Arrarys.toString(accounts)); 
+
+// initialized each account 
+accounts[0] = new BankAccount("Marty", 1,25);
+         1
+        ...
+
+//                  0        1         2 
+String[] names = {"Allen", "Boris", "Hellen"}
+exe. switch pairs in string 
+
+public void switchPairs(String[] words) {
+  for int i = 0; i < words.length; i+=2 {
+    // swap ele i with i+1
+    ...
+  }
+}
+
+Lecture 18 More Classes and Objects; Inheritance =================================
+class: template for new type of objects
+object: entity that contains state and behavior 
+
+There elements of class: 
+-fields (data stored in each object) 
+-constructor (initialize new object) 
+-methods (behavior in each object)
+
+print object 
+
+4. inheritance =====
+superclass: GObject: defines state and behavior common to all shapes:
+  contains(x,y)
+  getHeight()
+
+subclass: GLabel
+  get/setFont
+
+public class ClassName extends SuperClass {
+}
+e.g.
+public class Secretary extends Employee {
+}
+
+Note: possible override method to Emplyee class, by simply using the method in the child over the parent
+
+super keyword =====
+subclass can call overridden methods with super
+super.method(parameters)
+e.g. 
+public class Secretary extends Employee {
+  public int getVacationDays(){
+    return super.getVacationDays() + 5;
+}
+
+Lecture 19 Inheritance and Polymorphism =================================
+System.out.println("Hello world")  // generic java class iso Standford specific class/lib
+
+e.g. employee > secretary > legal secretary 
+
+constructor ====
+fields gets initialized by constructor 
+subclass use super() to inherit fields values
+
+polymorphism ====
+ability for the same code to be used with different types of objects and behave differently with each 
+e.g. printly can accept any type of parameter and print it 
+
+
+06.04.2023
+Lecture 20 Critters =================================
+
+
+Lecture 21 Arraylist =================================
+similar to List in Python
+can store anything but primitives (int, double, bool, char) > use some class. 
+
+
+09.042023
+Lecture 22 Critters 2 =================================
+e.g. class BerkeleyGuy ====
+public BerkeleyGuy extends Critter 
+e.g. class Snake
+public Snake extends Critter
+
+Static data and behavior  ====
+all objects created from a class share the same variables 
+e.g. frat boys want to go to the same party
+Public class FratBoy extends Critter {
+  private static int partyX
+  private static int partyY
+  
+  public FratBoy(){
+    // pick random party location
+  }
+
+  public Direction getMove(){
+    // move to the random spot
+  }
+}
+
+
+Lecture 23 GUIs 1 =================================
+Java GUI history ====
+AWT abstract windinging toolkit: cross-platform(windows,mac, linux,...) 
+Swing: newer GUI lib 
+
+terminology ====
+window:
+
+components/widges:
+JTextField
+JButton
+JTable
+...
+
+container: 
+
+GUI programs ====
+extends Program  // class header
+run() > init()
+
+import acm...
+import java....
+
+public class ColorFun extend Program(){
+  public void init(){
+    JButton butt1 = new JButton("Button 1")
+    add(butt1 )
+  }
+}
+
+window regions: 5 regions: north, west, south, east, center
+components properties: getColor, setFont, isVisible 
+JLabel: str of text displayed 
+Font: style, shape
+Acton events: click on a button or other component, check obx, press Enter
+import packages: java.awt.event
+addActionListeners();  // add to init()
+
+public void actionPerformed(ActionEvent event) {
+  string command = event.getActionCommand()
+  get.
+  if ...
+}
+
+exercise: TipCalculator
+
+Lecture 24 GUIs 2 =================================
+icons: new ImageIcon("res/rubberducky.png")
+borders: .setBorder(BorderFactory.xxx) 
+// java componet documentation: Java API Docs
+
+JTextfield: + event (click button or hit ENTER)
+
+check box: yes no
+radio button: choose in between
+JRadioButton fifteenbutton = new JRadioButton("15%")
+
+// to make mutually exclusive  
+ButtonGroup group = new ButtonGroup();
+group.add(fifteenbutton)
+group.add()
+
+2d graphics and animation ====
+GCanvas 
+
+model:classes/objects that represent core data of an app
+view: classes/objects used to display data to user.
+
+
+
+
+Lecture 25 GUIs 3 =================================
+Jlist
+Jslider
+JFileChooser
+JComboBox
+GridLayout
+
+Lecture 26 Polymorphism and Interfaces=================================
+Lecture 27 'Real' Java =================================
+
