@@ -334,6 +334,7 @@ public class Main {
 		myCar1.drive();
 		
 		// # 27. Constructors 
+		// constructor = special method that is called when object is instantiated/created.
 		Human human1 = new Human("Rick", 55);
 		Human human2 = new Human("Morty", 66);
 		System.out.println("\n # 27 constructors:");
@@ -343,7 +344,6 @@ public class Main {
 		// # 28. local global
 		//local =  declared inside a method
 		//   visible only to that method
-		  
 		//global  = declared outside a method, but within a class
 		//   visible to all parts of a class
 		System.out.println("\n # 28 local vs global variables:");
@@ -359,13 +359,57 @@ public class Main {
 		System.out.println(myPizza1.topping);
 		
 		// # 30. toSting 
-		Car myCar30 = new Car();
-		System.out.println("\n # 30 toString: "+myCar30);
+		Car myCar = new Car();
+		System.out.println("\n # 30 toString: "+myCar);
+
+		// # 31 array of objects
+		Food food1 = new Food("burger");
+		Food food2 = new Food("pasta");
+		Food[] refrigerator = {food1, food2};
+		System.out.println("\n # 31 array of objects: "+refrigerator[0].name+' '+refrigerator[1].name);
+
+		// # 32 object passing 
+		System.out.println("\n # 32 object passing: ");
+
+		Garage garage = new Garage();
+		Auto auto1 = new Auto("BMW");
+		Auto auto2 = new Auto("Benz");
+		garage.park(auto1);
+		garage.park(auto2);
 
 		
+		// # 33  static keyword
+		// 		static = modifier. A single copy of a variable/method is created and shared.
+		//		The class "owns" the static member. ex. all Friend instances share friendsCount
+		Friend friend1 = new Friend("Rick");
+		Friend friend2 = new Friend("Morty");
+		System.out.println("\n # 33  static keyword: "+Friend.friendsCount);
+
+		// # 34 inheritance
+		// 		one class acquires attributes/methods of another.
+		// 		ex.  vehicle(move/stop) --- car(wheel/door)
+		//                   |--------bike(wheel/pedal)
 		
-		// 31
-		
+		Vehicle34 vehicle = new Vehicle34();
+		Car34 car34 = new Car34();
+		Bike34 bike34 = new Bike34();
+		System.out.println(" # 34 inheritance:");
+		System.out.println("car has "+car34.doors+" doors");
+		System.out.println("bike has "+bike34.pedals+" pedals");
+		car34.move();
+		bike34.stop();
+	
+		// # 35 method overriding 
+		// 		Declaring a method in sub class, which is already present in parent class.
+		//		done so that a child class can give its own implementation
+		car34.speed(); 
+		bike34.speed(); // overiding happens
+
+		// # 36 super keyword
+		// # 37
+		// # 38
+		// # 39
+		// # 40
 		
 		
 		
