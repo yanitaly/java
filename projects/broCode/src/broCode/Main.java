@@ -4,10 +4,16 @@ import java.util.Scanner;
 import java.util.*;
 import javax.swing.JOptionPane;
 import java.util.Random;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+//import java.io.FileReader;
+import java.io.IOException;
+import javax.sound.sampled.*;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		// TODO Auto-generated method stub
 		System.out.print("Hello world\n");  // \n for line break
 		System.out.println("Hello world");  // add line break
@@ -445,7 +451,7 @@ public class Main {
 		System.out.println(car1.getMake());
 
 		// # 40 copy object < method 1
-		System.out.println(" # 40 copy object:");
+		System.out.println(" # 40 copy object: method1");
 		Car39 car3 = new Car39("Fiat");
 		Car39 car4 = new Car39("Volvo");
 		System.out.println(car3+"\n"+car4);
@@ -457,21 +463,168 @@ public class Main {
 		System.out.println(car3.getMake()+"\n"+car4.getMake());
 
 		// # 40 copy object < method 2
+		System.out.println(" # 40 copy object: method2");
 		Car40 car5 = new Car40("Fiat");
 		Car40 car6 = new Car40(car5);
 		System.out.println("\n"+car5+"\n"+car6);
 		System.out.println(car5.getMake()+"\n"+car6.getMake());
 		
-		
 		// # 41 Interface
-		// # 42 polymorphism
+		// 		template that class has/must do, similar to inheritance. 
+		//  ex.        Fish
+		//              |       
+		// interfaces: prey --------- Rabbit
+        //             predator ----- Hawk	
+        //              |
+		//             Fish
+		System.out.println(" # 41 interface:");
+		Hawk hawk = new Hawk();
+		Rabbit rabbit = new Rabbit();
+		Fish fish = new Fish();
+		hawk.hunt();
+		rabbit.flee();
+		fish.hunt();
+		fish.flee();
+		
+		// # 42 polymorphism (many forms)
+		//   	greek word for poly-"many", morph-"form"
+		//		The ability of an object to identify as more than one type
+		//      e.g. a boat ----- boat & vehicle & object 
+		
+		System.out.println(" # 42 polymorphism: ");
+		Boat42 boat = new Boat42();
+		Vehicle37[] racers = {car37,boat};
+		for(Vehicle37 x42 : racers) {
+					x42.go();
+		}
+	
 		// # 43 dynamic polymorphism 
+		//      dynamic = after compilation (during runtime)
+		/*
+		System.out.println(" # 43 dynamic polymorphism: ");
+		Scanner scanner43 = new Scanner(System.in);
+		Animal animal;
+		System.out.println("What animal do you want? 1=dog, 2=cat");
+		int choice = scanner43.nextInt();
+		if (choice==1) {
+			animal = new Dog();
+			animal.sound();
+		}
+		else if(choice==2){
+			animal = new Cat();
+			animal.sound();
+		}
+		else {
+			System.out.println("Invalid choice");
+		}
+		*/
+		
 		// # 44 exception handling 
+		//		even that occurs during execution of program, 
+		//      disrupts normal flow of instructions
+		/*
+		Scanner scanner44 = new Scanner(System.in);
+		try {
+			System.out.println("Enter a whole number to divide: ");
+			int x44 = scanner44.nextInt();
+			System.out.println("Enter a whole number to divide by: ");
+			int y44 = scanner44.nextInt();
+			int z44 = x44/y44;
+			System.out.println("result: " + z44); 
+		}
+		catch(ArithmeticException e) {
+			System.out.println("You can't divide by zero! IDIOT!"); }
+		catch(InputMismatchException e) {
+			System.out.println("PLEASE ENTER A NUMBER OMFG!!!");  }
+		catch(Exception e) {
+			System.out.println("Something went wrong"); }
+		finally {
+			scanner44.close(); 	}
+		*/
+	
 		// # 45 file class
+		// file = An abstract representation of file and directory pathname
+		System.out.println(" # 45. file class:");
+		File file = new File("C:/DumpStack.log");
+		if(file.exists()) {
+			System.out.println("That file exists! :O!");
+			System.out.println(file.getPath());
+			System.out.println(file.getAbsolutePath());
+			System.out.println(file.isFile());
+			file.delete();
+		}
+		else {
+			System.out.println("That file doesn't exist :(");
+		}  
+		  
 		// # 46 file writer
+		System.out.println(" # 46. file writter");
+		try {
+			FileWriter writer = new FileWriter("res/poem.txt");
+			writer.write("Roses are red \nViolets are blue \nBooty booty booty booty \nRockin' everywhere!");
+			writer.append("\n(A poem by Bro)");
+			writer.close();
+		} 
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
 		// # 47 file reader 
+		/*
+		// 		read the contents of a file as a stream of characters. 
+		//read() returns an int value which contains the byte value
+		//when read() returns -1, there is no more data to be read
+ 		System.out.println(" # 47. file reader");
+		try {
+			FileReader reader = new FileReader("res/poem.txt");
+			int data = reader.read();
+			while(data != -1) {
+				System.out.print((char)data);
+				data = reader.read();
+			}
+			reader.close();
+		} 
+		catch (FileNotFoundException e) {
+			   // TODO Auto-generated catch block
+			   e.printStackTrace();     } 
+		catch (IOException e) {
+			   // TODO Auto-generated catch block
+			   e.printStackTrace();  }
+		*/
+		
 		// # 48 audio
+ 		System.out.println(" # 48. audio:");
+		Scanner scanner48 = new Scanner(System.in);
+		File file48 = new File("res/Fine_Dining.wav");
+		  AudioInputStream audioStream = AudioSystem.getAudioInputStream(file48);
+		  Clip clip = AudioSystem.getClip();
+		  clip.open(audioStream);
+	
+		  String response = "";
+		  while(!response.equals("Q")) {
+			  System.out.println("P = play, S = Stop, R = Reset, Q = Quit");
+			  System.out.print("Enter your choice: ");
+		
+			  response = scanner48.next();
+			  response = response.toUpperCase();
+			  switch(response) {
+			  	case ("P"): clip.start();
+			  		break;
+			  	case ("S"): clip.stop();
+			  		break;
+			  	case ("R"): clip.setMicrosecondPosition(0);
+			  		break;
+			  	case ("Q"): clip.close();
+			  		break;
+			  	default: System.out.println("Not a valid response");
+			  }
+		  }
+		  System.out.println("Byeeee!"); 
+		
+		  
 		// # 49 GUI
+
 		// # 50 Labels
 
 	}

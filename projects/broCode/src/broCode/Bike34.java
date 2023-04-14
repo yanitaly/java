@@ -11,4 +11,7 @@ public class Bike34 extends Vehicle34 {
 	void speed() {
 		System.out.println("it goes slow.");
 	}
+	void go() {
+		System.out.println("Bike is going.");
+	}
 }
