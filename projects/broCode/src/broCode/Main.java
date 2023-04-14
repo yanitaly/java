@@ -341,7 +341,7 @@ public class Main {
 		human1.eat();
 		human2.drink();
 
-		// # 28. local global
+		// # 28. local vs global
 		//local =  declared inside a method
 		//   visible only to that method
 		//global  = declared outside a method, but within a class
@@ -349,8 +349,8 @@ public class Main {
 		System.out.println("\n # 28 local vs global variables:");
 		DiceRoller diceRoller = new DiceRoller();
 				
-		// # 29. overloaded contructors 
-		//Pizza myPizza1 = new Pizza("thicc crust");
+		// # 29. overloaded constructors 
+		//Pizza myPizza1 = new Pizza("thick crust");
 		Pizza myPizza1 = new Pizza("thicc crust", "tomato");
 		System.out.println("\n # 29 overloaded contructors: Here is your pizza ingredients ");
 		System.out.println(myPizza1.bread);
@@ -359,6 +359,8 @@ public class Main {
 		System.out.println(myPizza1.topping);
 		
 		// # 30. toSting 
+		// special method all objects inherit, returns a string that "textually represents"
+		// an object. can be used implicitly and explicitly.
 		Car myCar = new Car();
 		System.out.println("\n # 30 toString: "+myCar);
 
@@ -366,6 +368,7 @@ public class Main {
 		Food food1 = new Food("burger");
 		Food food2 = new Food("pasta");
 		Food[] refrigerator = {food1, food2};
+		// Food refrigerator[] = {food1, food2}; //  also working
 		System.out.println("\n # 31 array of objects: "+refrigerator[0].name+' '+refrigerator[1].name);
 
 		// # 32 object passing 
@@ -388,9 +391,7 @@ public class Main {
 		// # 34 inheritance
 		// 		one class acquires attributes/methods of another.
 		// 		ex.  vehicle(move/stop) --- car(wheel/door)
-		//                   |--------bike(wheel/pedal)
-		
-		Vehicle34 vehicle = new Vehicle34();
+		//                         |--------bike(wheel/pedal)
 		Car34 car34 = new Car34();
 		Bike34 bike34 = new Bike34();
 		System.out.println(" # 34 inheritance:");
@@ -427,14 +428,52 @@ public class Main {
 		//protected: visible to all classes in the same package or classes in other packages that are a subclass
 		//default: visible to all classes in the same package 
 		//private: visible only in the same class
-		
+		// e.g.
+		// package1 ---- A.java 
+		//	    |--------- B.java 
+		//
+		// package2 ---- C.java 
+		//	    |--------- Asub.java 
 		
 		// # 39 encapsulation
+		// attributes of a class should be hidden or private
+		// can be accessed only through methods (getters & setters)
+		System.out.println(" # 39 encapsulation:");
+		Car39 car1 = new Car39("BMW");
+		System.out.println(car1.getMake());
+		car1.setMake("Benz");
+		System.out.println(car1.getMake());
+
+		// # 40 copy object < method 1
+		System.out.println(" # 40 copy object:");
+		Car39 car3 = new Car39("Fiat");
+		Car39 car4 = new Car39("Volvo");
+		System.out.println(car3+"\n"+car4);
+		System.out.println(car3.getMake()+"\n"+car4.getMake());
+		// car4 = car3;
+		// System.out.println("\n"+car3+"\n"+car4);  // return same addr
+		car4.copy(car3);
+		System.out.println("\n"+car3+"\n"+car4);
+		System.out.println(car3.getMake()+"\n"+car4.getMake());
+
+		// # 40 copy object < method 2
+		Car40 car5 = new Car40("Fiat");
+		Car40 car6 = new Car40(car5);
+		System.out.println("\n"+car5+"\n"+car6);
+		System.out.println(car5.getMake()+"\n"+car6.getMake());
 		
-		// # 40 copy object
 		
-		
-		
+		// # 41 Interface
+		// # 42 polymorphism
+		// # 43 dynamic polymorphism 
+		// # 44 exception handling 
+		// # 45 file class
+		// # 46 file writer
+		// # 47 file reader 
+		// # 48 audio
+		// # 49 GUI
+		// # 50 Labels
+
 	}
 	
 
