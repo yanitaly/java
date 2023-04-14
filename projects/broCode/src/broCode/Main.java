@@ -402,14 +402,36 @@ public class Main {
 		// # 35 method overriding 
 		// 		Declaring a method in sub class, which is already present in parent class.
 		//		done so that a child class can give its own implementation
+		System.out.println(" # 35 method overriding:");
 		car34.speed(); 
 		bike34.speed(); // overiding happens
 
 		// # 36 super keyword
-		// # 37
-		// # 38
-		// # 39
-		// # 40
+		// 		refers to superclass/parent of an object, similar to "this"
+		System.out.println(" # 36 super keyword:");
+		Hero hero1 = new Hero("batman",43,"$$$");
+		System.out.println(hero1.name);
+		System.out.println(hero1.age);
+		System.out.println(hero1.power);
+
+		Hero hero2 = new Hero("superman",34,"everything");
+		System.out.println(hero2.toString());
+		
+		// # 37 abstract 
+		System.out.println(" # 37 abstract:");
+		Car37 car37 = new Car37();
+		car37.go();
+		
+		// # 38 access modifiers: (public, protected, private) 
+		//public: visible in all classes in all packages
+		//protected: visible to all classes in the same package or classes in other packages that are a subclass
+		//default: visible to all classes in the same package 
+		//private: visible only in the same class
+		
+		
+		// # 39 encapsulation
+		
+		// # 40 copy object
 		
 		
 		
