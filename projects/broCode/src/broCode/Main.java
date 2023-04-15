@@ -3,12 +3,23 @@ package broCode;
 import java.util.Scanner;
 import java.util.*;
 import javax.swing.JOptionPane;
+
 import java.util.Random;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.io.File;
 import java.io.FileWriter;
 //import java.io.FileReader;
 import java.io.IOException;
 import javax.sound.sampled.*;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.border.Border;
+import javax.swing.JPanel;
+
 
 public class Main {
 
@@ -550,7 +561,6 @@ public class Main {
 			writer.close();
 		} 
 		catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			
@@ -604,11 +614,6 @@ public class Main {
 			}
 		  }
 		  System.out.println("Byeeee!"); 
-		  
-		// # 49 GUI
-
-		// # 50 Labels
-
 	}
 	
 	static int add_int(int a, int b) {
@@ -621,7 +626,8 @@ public class Main {
 		return a+b+c;
 	}
 	
-	
+	// ******************************************************************************
+
 }
 
 
