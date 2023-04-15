@@ -11,6 +11,5 @@ public class Person {
 	
 	public String toString() {
 		return name+"\n"+age+"\n";
-
 	}
 }

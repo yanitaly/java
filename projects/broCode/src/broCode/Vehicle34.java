@@ -8,6 +8,6 @@ public class Vehicle34 {
 		System.out.println(" Vehicle can stop.");
 	}
 	void speed() {
-		System.out.println("it goes fast.");
+		System.out.println("Vehicle can go fast or slow.");
 	}
 }

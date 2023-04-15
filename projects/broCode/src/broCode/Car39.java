@@ -5,7 +5,6 @@ public class Car39 {
 	
 	Car39(String make){
 		this.setMake(make);
-		
 	}
 	
 	public String getMake(){
