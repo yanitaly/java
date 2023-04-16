@@ -26,7 +26,7 @@ public class Main {
 		Planet myPlant = Planet.EARTH;
 		canLiveHere(myPlant);
 		
-		//75. hashmap
+		//75. hash map > dic in py
 		// HashMap implements the Map interface (need import)
 		// HashMap is similar to ArrayList, but with key-value pairs
 		// stores objects, need to use Wrapper Class
@@ -66,7 +66,7 @@ public class Main {
 	    }
 	    catch(Exception e)
 	      {
-	    	  System.out.println("A problem occured: "+e);
+	    	  System.out.println("A problem occurred: "+e);
 	    }   
 	    */
 	 				
@@ -140,27 +140,76 @@ public class Main {
 		// ex.2 3 buttons with different actions
 		MyFrameAnonymousInnerClass myFrame = new MyFrameAnonymousInnerClass();
 
-
-		
-		/*
-		 * {
-
-			@Override
-			public void Welcome() {
-				System.out.println("Hello World v2");
-			}
-		}
-		Greeting greeting2 = new Greeting();
-		greeting2.Greeting();
-		*/
 		// 80. lambda 
-		System.out.println(" # 8: ");
-
+		System.out.println(" # 80: lambda ");
+		/* lambda expression = 	feature for Java 8 and above
+		* 						also known as an anonymous method
+		* 						a shorter way to write anonymous classes with only one method
+		*
+		*						need to use a functional interface or use a pre-defined functional interface
+		*						they contain only one abstract method
+		*						ex. ActionListener, Runnable, (user-defined)
+		*
+		*						A Lambda expression can be used in any place where a functional interface is required
+		*						How to use a lambda expression:
+		*						(arguments) -> {statement/s}
+		*/
+		String name80 = "Bro";
+		char symbol = '!';
+		
+		MyInterface myInterface = (x,y) -> {
+			System.out.println("Heello World!");
+			System.out.println("It is a nice day "+x+y);
+		};
+		MyInterface myInterface2 = (x,y) -> {
+			System.out.println("Hello "+x+y);
+		};
+			
+		myInterface.message(name80,symbol);
+		myInterface2.message(name80,symbol);
+			
+		new MyFrameLambda();
+		
 		// 81. generics 
-		System.out.println(" # 8: ");
+		// (1) generic method 
+		System.out.println(" # 81: generics ");
+	    Integer[] intArray = {1, 2, 3, 4, 5};
+	    Double[] doubleArray = {5.5, 4.4, 3.3, 2.2, 1.1};
+	    Character[] charArray = {'H', 'E', 'L', 'L', 'O'};
+	    String[] stringArray = {"B","Y","E"};
+	      
+	    System.out.print("Integer Array: ");
+	    displayArray(intArray);
+	    System.out.println(firstIndex(intArray));
 
+        System.out.print("Double Array: ");
+	    displayArray(doubleArray);
+	    System.out.println(firstIndex(doubleArray));
+
+	    System.out.print("Character Array: ");
+	    displayArray(charArray);
+	    System.out.println(firstIndex(charArray));
+	      
+	    System.out.print("String Array: ");
+	    displayArray(stringArray);
+	    System.out.println(firstIndex(charArray));
+	    
+	    // (2) generic class 
+	    //(optional) bounded types = 	you can create the objects of a generic class to have data 
+		//					of specific derived types ex.Number
+		MyGenericClass<Integer,Integer> myInt = new MyGenericClass<>(1,9);
+		MyGenericClass<Double,Double> myDouble = new MyGenericClass<>(3.14,1.01);   
+		//MyGenericClass<Character,Character> myChar = new MyGenericClass<>('@','$');
+		//MyGenericClass<String,Character> myString = new MyGenericClass<>("Hello",'!');
+		   	   
+		System.out.println(myInt.getValue());
+		System.out.println(myDouble.getValue());
+		//System.out.println(myChar.getValue());
+		//System.out.println(myString.getValue());
+		
 		// 82. serialization
 		System.out.println(" # 8: ");
+		
 		
 		// 83. timer task
 		System.out.println(" # 8: ");
@@ -181,7 +230,7 @@ public class Main {
 		// 88. executable
 		
 		// 89. encryption program
-		
+				
 		// 90. text editor app 
 		
 
@@ -214,6 +263,23 @@ public class Main {
 	     else {
 	    	 System.out.println("You are now signed up!"); 
 	     }       
-}
+	}
+	   
+	 // Generic method
+	 public static <Thing> void displayArray(Thing[] array) {
 
+		 for(Thing x : array) {
+	         System.out.print(x+" ");
+	     }
+	     System.out.println();
+	 }
+	   
+	 // Generic method with generic return type 
+	 public static <Thing> Thing firstIndex(Thing[] array) {
+		 return array[0];
+	 }
+	   
+
+	   
+	 
 }
