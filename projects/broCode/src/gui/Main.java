@@ -96,14 +96,14 @@ public class Main {
 		*/
 		
 		// # 52 buttons 
-		// 	JButton = a button that performs an action when clicked on
+		// 		JButton = a button that performs an action when clicked on
 		System.out.println(" # 52. buttons ");
 		new MyFrame();
 		
 		// # 53 BorderLayout 
-		// Layout Manager = Defines the natural layout for components within a container
-		// 3 common managers
-		// BorderLayout = 	A BorderLayout places components in five areas: NORTH,SOUTH,WEST,EAST,CENTER. 
+		// 		Layout Manager = Defines the natural layout for components within a container
+		// 		3 common managers
+		// 		BorderLayout = 	it places components in five areas: NORTH,SOUTH,WEST,EAST,CENTER. 
 		//					All extra space is placed in the center area.
 		System.out.println(" # 53 BorderLayout  ");
 		JFrame frame = new JFrame();

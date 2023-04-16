@@ -306,7 +306,7 @@ public class Main {
 		int z23 = add_int(x22,y22,x23);
 		System.out.println(" # 23. over loaded method: "+z23);
 		 
-		// # 24. printf() = 	an optional method to control, format, and display text to the console window
+		// # 24. printf() = method to control, format, and display text to the console window
 		//				two arguments = format string + (object/variable/value)
 		//				% [flags] [precision] [width] [conversion-character]
 		boolean myBoolean = true;
@@ -326,7 +326,6 @@ public class Main {
 		System.out.printf("Hello %10s\n",myString);
 		//[precision] = sets number of digits of precision when outputting floating-point values
 		System.out.printf("You have this much money %.1f\n",myDouble);
-		
 		// [flags] = adds an effect to output based on the flag added to format specifier
 		// - : left-justify
 		// + : output a plus ( + ) or minus ( - ) sign for a numeric value
@@ -334,7 +333,7 @@ public class Main {
 		// , : comma grouping separator if numbers > 1000
 		System.out.printf("You have this much money %,f\n",myDouble);
 		
-		// # 25. final (= constant in python)
+		// # 25. final (= constant in Python)
 		final double PI = 3.14159;
 		//PI = 4;  //You can't change a final variable (use capital)
 		System.out.println(" # 25 final:"+PI);
@@ -448,7 +447,7 @@ public class Main {
 		System.out.println(car1.getMake());
 
 		// # 40 copy object < method 1
-		System.out.println(" # 40.1 copy object: method1");
+		System.out.println(" # 40. copy object: method1");
 		Car39 car3 = new Car39("Fiat");
 		Car39 car4 = new Car39("Volvo");
 		System.out.println(car3+"\n"+car4);
@@ -459,8 +458,8 @@ public class Main {
 		System.out.println("\n"+car3+"\n"+car4);
 		System.out.println(car3.getMake()+"\n"+car4.getMake());
 
-		// # 40 copy object < method 2
-		System.out.println(" # 40.2 copy object: method2");
+		// copy object < method 2
+		System.out.println(" # copy object: method2");
 		Car40 car5 = new Car40("Fiat");
 		Car40 car6 = new Car40(car5);
 		System.out.println(car5+"\n"+car6);
@@ -515,7 +514,7 @@ public class Main {
 		
 		// # 44 exception handling 
 		System.out.println(" # 44 exception handling : ");
-		//		even that occurs during execution of program, 
+		//		event that occurs during execution of program, 
 		//      disrupts normal flow of instructions
 		/*
 		Scanner scanner44 = new Scanner(System.in);
