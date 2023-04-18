@@ -7,9 +7,13 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 
+import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// # 73. method chaining =  a common syntax for invoking multiple method calls in OOP
 		//      condense code into less lines
 		System.out.println(" # 73. metho chaning: ");
@@ -208,41 +212,174 @@ public class Main {
 		//System.out.println(myString.getValue());
 		
 		// 82. serialization
-		System.out.println(" # 8: ");
+		System.out.println(" # 82. serialization");
 		
 		
 		// 83. timer task
-		System.out.println(" # 8: ");
+		// Timer = 	A facility for threads to schedule tasks 
+		//			for future execution in a background thread
+		//TimerTask = A task that can be scheduled for one-time 
+		//			or repeated execution by a Timer
+		System.out.println(" # 83. timer task ");
+		Timer timer = new Timer();
+		TimerTask task = new TimerTask() {
+			int counter = 10;
+			@Override
+			public void run() {
+				if(counter>0) {
+					System.out.println(counter+" seconds");
+					counter--;
+				}
+				else {
+					System.out.println("HAPPY NEW YEAR!");
+					timer.cancel();
+				}
+			}
+		};
+		Calendar date = Calendar.getInstance();
+		date.set(Calendar.YEAR,2020);
+		date.set(Calendar.MONTH,Calendar.DECEMBER);
+		date.set(Calendar.DAY_OF_MONTH,31);
+		date.set(Calendar.HOUR_OF_DAY,23);
+		date.set(Calendar.MINUTE,59);
+		date.set(Calendar.SECOND,50);
+		date.set(Calendar.MILLISECOND,0);
 
+		//timer.schedule(task, 0);
+		//timer.schedule(task, date.getTime());
+		//timer.scheduleAtFixedRate(task, 0, 1000);
+		//timer.scheduleAtFixedRate(task, date.getTime(), 10000);
 		
 		// 84. threads
-		System.out.println(" # 8: ");
-
-		// 85. multi-threading 
-		System.out.println(" # 8: ");
+		System.out.println(" # 84. threads");
+		/*
+		thread =	A thread of execution in a program (kind of like a virtual CPU)
+				The JVM allows an application to have multiple threads running concurrently
+				Each thread can execute parts of you code in parallel with the main thread
+				Each thread has a priority.
+				Threads with higher priority are executed in preference compared to threads with a lower priority
+			
+			    The Java Virtual Machine continues to execute threads until either of the following occurs
+					1. The exit method of class Runtime has been called
+					2. All user threads have died
+					
+				When a JVM starts up, there is a thread which calls the main method
+				This thread is called “main”
+						
+				Daemon thread is a low priority thread that runs in background to perform tasks such as garbage collection 
+			JVM terminates itself when all user threads (non-daemon threads) finish their execution
+		 */ 	
+		System.out.println(Thread.activeCount());
+    	Thread.currentThread().setName("MAIN");
+    	System.out.println(Thread.currentThread().getName());
+    	Thread.currentThread().setPriority(10);
+    	System.out.println(Thread.currentThread().getPriority());
+    	System.out.println(Thread.currentThread().isAlive());
+    	/*
+    	for(int i =3;i>0;i--) {
+    		System.out.println(i);
+    		Thread.sleep(1000);
+    	}
+    	System.out.println("You are done!");
+    	 */
+    	/*
+    	MyThread thread2 = new MyThread();
+       	thread2.setDaemon(true);
+    	System.out.println(thread2.isDaemon());
+    	thread2.start();
+    	System.out.println(thread2.isAlive());
+    	thread2.setName("2nd thread");
+    	System.out.println(thread2.getName());  // 2nd thread
+    	thread2.setPriority(1);
+    	System.out.println(thread2.getPriority()); // 1
+    	System.out.println(Thread.activeCount());  // 5
+    	*/
+		
+    	// 85. multi-threading 
+		System.out.println(" # 85. multi-threading  ");
+		// Create a subclass of Thread
+    	MyThreadMulti thread1 = new MyThreadMulti();
+    	  
+    	//or (second way to start a thread)
+    	//implement Runnable interface and pass instance as an argument to Thread() 
+    	MyRunnable runnable1 = new MyRunnable();
+    	Thread thread2 = new Thread(runnable1);
+    	
+    	//thread1.setDaemon(true);
+    	//thread2.setDaemon(true);
+    	
+    	thread1.start();
+    	thread1.join(3000); //calling thread (ex.main) waits until the specified thread dies for x milliseconds
+    	thread2.start();
+    	//System.out.println(1/0);
 		
 		// 86. packages 
-		System.out.println(" # 8: ");
+		System.out.println(" #  86. packages  ");
 
 		// 87. compile and run with cmd prompt
-		System.out.println(" # 8: ");
-
+		System.out.println(" # 87. compile and run with cmd prompt ");
+		/*
+		compile and run Java with Command Prompt
+		----------------------------------------
+		1. Make sure you have a Java JDK installed (we did this in lesson #1)
+		2. (optional) use a text editor and save a file as .java
+		3. Open Command Prompt (windows) or Terminal (Mac) on your computer
+		4. set path=C:\Program Files\Java\jdk-14.0.1\bin (where JDK is located)
+		5. cd C:\Users\Myname\Desktop (or wherever you java file is)
+		6. javac HelloWorld.java (to compile)
+		7. java HelloWorld (to run a .class file, it's portable)
+		*/
+		
 		// 88. executable
+		/*
+		#java #executable #jar
+
+		Create an executable jar with Eclipse IDE
+		-----------------------------------------
+		1. Right click on Java project (pick a project with a GUI)
+		2. Export
+		3. Java , Runnable Jar file
+		4. At Launch configuration select your project
+		5. At Export destination, select where you want this jar file exported to
+		6. Finish
+
+		Create an executable jar with IntelliJ
+		-----------------------------------------
+		1. File , Project Structure , Artifacts , (+) , JAR ,  jar from module with dependencies
+		2. Main Class: select the class containing your main method
+		3. OK
+		3. Change output directory to where you want this JAR saved to
+		6. Apply , OK
+		7. Build (top of window in IntelliJ) , Build Artifacts , Build
+
+		If you want an icon, convert an image to a .ico file
+		----------------------------------------------------
+		1. https://icoconvert.com/ (this is a decent site)
+		2. Choose your image (file type my vary)
+		3. Upload
+		4. Convert to ICO
+		5. Download your icon
+
+		Use Launch4j to create an .exe with custom icon
+		----------------------------------------------
+		1. Install Launch4j http://launch4j.sourceforge.net/
+		2. Output file: browse for the output destination and name your file ending with .exe
+		3. Jar: browse for where you saved your jar or executable jar file
+		4. (Optional) Icon: browse for your custom icon (must be .ico)
+		5. navigate to JRE tab
+		6. Bundled JRE path: Browse for location of your jdk (Example C:\Program Files\Java\jdk-14.0.1)
+		7. At the top of window, click the Build Wrapper (gear icon)
+		8. name and save the Lauch4j config file where you want
+		9. Your application.exe should be saved to your output file location (no longer need previous files)
+		*/
 		
 		// 89. encryption program
 				
 		// 90. text editor app 
 		
 
-
-		
-		
-		
 	}
 
-	
-	
-	
 	static void canLiveHere(Planet myPlanet) {
 		switch(myPlanet) {
 		case EARTH:
@@ -277,9 +414,5 @@ public class Main {
 	 // Generic method with generic return type 
 	 public static <Thing> Thing firstIndex(Thing[] array) {
 		 return array[0];
-	 }
-	   
-
-	   
-	 
+	 }   	 
 }
